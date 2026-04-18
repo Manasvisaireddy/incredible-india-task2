@@ -209,8 +209,8 @@ Identical to Task 1 — soft & elegant palette inspired by the Indian tricolour:
 |---|---|
 | **Task 1 Repo** | https://github.com/Manasvisaireddy/incredible-india |
 | **Task 1 Live** | https://manasvisaireddy.github.io/incredible-india/ |
-| **Task 2 Repo** | *(your new separate GitHub repo)* |
-| **Task 2 Live** | *(your new separate Netlify / GitHub Pages link)* |
+| **Task 2 Repo** | https://github.com/Manasvisaireddy/incredible-india-task2 |
+| **Task 2 Live** | https://incredible-india-task2.netlify.app/ |
 
 ---
 
