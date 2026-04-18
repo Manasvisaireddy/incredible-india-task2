@@ -1,0 +1,245 @@
+{% set pageTitle = "About India — Culture, Heritage, Religions & Traditions | Incredible India" %}
+{% set activePage = "about" %}
+
+{% include "partials/head.njk" %}
+<body>
+
+{% include "partials/navbar.njk" %}
+
+<!-- ══════════════════════════════════════════
+     ABOUT HERO
+═══════════════════════════════════════════ -->
+<section class="page-hero about-hero d-flex align-items-center">
+  <div class="tricolour-strip"></div>
+  <div class="container text-center text-white">
+    <p class="hero-tagline mb-2">🇮🇳 Unity in Diversity</p>
+    <h1 class="playfair hero-title mb-3">
+      Where every state is a country, every village a story
+    </h1>
+    <p class="hero-subtitle mx-auto">
+      India is not a place — it's a feeling. A 5,000-year continuum of faith, art, science and hospitality.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     OUR STORY
+═══════════════════════════════════════════ -->
+<section class="py-5 bg-cream">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-5">
+        <p class="section-eyebrow">Our Story</p>
+        <h2 class="playfair section-title mb-3">Travel that goes deeper than sightseeing</h2>
+        <p class="text-muted">
+          We are a small team of travel curators based in India, building journeys for people who want
+          to <em>understand</em> India — not just photograph it. From a homestay in a Toda village
+          to dawn aarti on the Ganga, we open doors most travel sites don't know exist.
+        </p>
+        <p class="text-muted">
+          Every itinerary we design supports local artisans, family-run guesthouses and indigenous
+          guides. Tourism, done well, is a force for preservation.
+        </p>
+        <a href="/contact.html" class="btn btn-saffron mt-2">Talk to a Curator</a>
+      </div>
+      <div class="col-lg-7">
+        <div class="row g-2">
+          <div class="col-6">
+            <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&q=80"
+                 class="img-fluid rounded-3 shadow-sm about-img" alt="Temple" loading="lazy" />
+          </div>
+          <div class="col-6">
+            <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=80"
+                 class="img-fluid rounded-3 shadow-sm about-img" alt="Backwaters" loading="lazy" />
+          </div>
+          <div class="col-6">
+            <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80"
+                 class="img-fluid rounded-3 shadow-sm about-img" alt="Mountains" loading="lazy" />
+          </div>
+          <div class="col-6">
+            <img src="https://images.unsplash.com/photo-1567157577867-05ccb1388e66?w=600&q=80"
+                 class="img-fluid rounded-3 shadow-sm about-img" alt="City" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FAITHS — Nunjucks set + loop
+═══════════════════════════════════════════ -->
+{% set faiths = [
+  { icon: "🕉️",  name: "Hinduism",          sub: "Sanatana Dharma — the eternal way" },
+  { icon: "☪️",  name: "Islam",              sub: "From Mughal courts to Sufi shrines" },
+  { icon: "✝️",  name: "Christianity",       sub: "Apostle Thomas to Goa & Kerala" },
+  { icon: "☬",   name: "Sikhism",            sub: "Born in Punjab, the Golden Temple shines" },
+  { icon: "☸️",  name: "Buddhism",           sub: "Bodh Gaya — where the Buddha awoke" },
+  { icon: "卐",   name: "Jainism",            sub: "Ahimsa & the marble peaks of Palitana" },
+  { icon: "🔥",  name: "Zoroastrianism",     sub: "The Parsi heritage of Mumbai & Gujarat" },
+  { icon: "✡️",  name: "Judaism",            sub: "2,000-year-old synagogues of Cochin" },
+  { icon: "𓂉",  name: "Bahá'í",             sub: "The Lotus Temple of Delhi welcomes all" },
+  { icon: "🌿",  name: "Indigenous Faiths",  sub: "Sarna, Donyi-Polo & tribal traditions" }
+] %}
+
+<section class="py-5">
+  <div class="container">
+    <div class="section-header text-center mb-5">
+      <p class="section-eyebrow">Faiths of Bharat</p>
+      <h2 class="playfair section-title">A land where every faith found a home</h2>
+      <p class="section-sub text-muted mx-auto">
+        India is the birthplace of four world religions and the welcoming home of many more.
+        Beneath one tricolour, every prayer rises together.
+      </p>
+    </div>
+
+    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-3">
+      {% for faith in faiths %}
+      <div class="col">
+        <div class="faith-card text-center h-100 p-3 rounded-3">
+          
+          <div class="faith-icon fs-2 mb-1">{{ faith.icon }}</div>
+          <h6 class="fw-semibold mb-1 small">{{ faith.name }}</h6>
+          <p class="text-muted" style="font-size: 0.72rem; line-height: 1.3;">{{ faith.sub }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <p class="text-center text-muted small mt-4 fst-italic">
+      The Indian tricolour represents every faith equally — we display it in place of any individual religious symbol.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     LIVING TRADITIONS — Nunjucks set + loop
+═══════════════════════════════════════════ -->
+{% set traditions = [
+  {
+    img: "https://images.unsplash.com/photo-1682345914623-508d32fa0998?q=80&w=1170&auto=format&fit=crop",
+    title: "Eight Classical Dances",
+    desc: "Bharatanatyam, Kathak, Kuchipudi, Odissi, Kathakali, Mohiniyattam, Manipuri and Sattriya — eight ways to tell a god's story with the body."
+  },
+  {
+    img: "https://images.unsplash.com/photo-1756399220348-7964d338cb19?q=80&w=1074&auto=format&fit=crop",
+    title: "A Festival Every Week",
+    desc: "Diwali's lamps, Holi's colours, Eid's feasts, Christmas carols, Pongal, Onam, Baisakhi, Durga Puja — India celebrates somewhere, every day of the year."
+  },
+  {
+    img: "https://images.unsplash.com/photo-1728910156510-77488f19b152?q=80&w=880&auto=format&fit=crop",
+    title: "A Cuisine of Empires",
+    desc: "From Kashmiri wazwan to Chettinad spice, from Bengali sweets to Goan vindaloo — every state cooks a different country's worth of food."
+  },
+  {
+    img: "https://images.unsplash.com/photo-1617339040829-44cc38deaa3a?q=80&w=1170&auto=format&fit=crop",
+    title: "42 UNESCO World Heritage Sites",
+    desc: "From the rock-cut Ajanta caves to Jaipur's walled city, India safeguards more UNESCO sites than almost any country on earth."
+  },
+  {
+    img: "https://plus.unsplash.com/premium_photo-1681488183639-f38511a647ef?q=80&w=1543&auto=format&fit=crop",
+    title: "22 Official Languages, 121 Mother Tongues",
+    desc: "Hindi, Tamil, Bengali, Telugu, Marathi, Urdu, Punjabi, Kannada, Malayalam… every 100 km, a new script and a new song."
+  }
+] %}
+
+<section class="py-5 bg-cream">
+  <div class="container">
+    <div class="section-header text-center mb-5">
+      <p class="section-eyebrow">Living Traditions</p>
+      <h2 class="playfair section-title">Art forms that breathe through generations</h2>
+    </div>
+
+    <div class="row g-4">
+      {% for t in traditions %}
+      <div class="col-md-6 col-lg-4">
+        <div class="tradition-card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
+          <img src="{{ t.img }}" class="w-100 tradition-img" alt="{{ t.title }}" loading="lazy" />
+          <div class="p-3">
+            <h5 class="fw-semibold mb-1 small-heading">{{ t.title }}</h5>
+            <p class="text-muted small mb-0">{{ t.desc }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SERVICES — Nunjucks set + loop
+═══════════════════════════════════════════ -->
+{% set services = [
+  { icon: "bi-journal-richtext", title: "Custom Itineraries",  desc: "Built around your dates, pace, budget and interests — no cookie-cutter tours." },
+  { icon: "bi-house-heart",      title: "Heritage Stays",       desc: "Royal havelis, plantation bungalows and family homestays vetted for character." },
+  { icon: "bi-person-badge",     title: "Local Guides",         desc: "Historians, chefs and storytellers who turn monuments into memories." },
+  { icon: "bi-headset",          title: "24×7 Support",         desc: "A real human on WhatsApp, every hour, every day of your trip." }
+] %}
+
+<section class="py-5">
+  <div class="container">
+    <div class="section-header text-center mb-5">
+      <p class="section-eyebrow">What We Offer</p>
+      <h2 class="playfair section-title">Services tailored to how you travel</h2>
+    </div>
+
+    <div class="row g-4">
+      {% for svc in services %}
+      <div class="col-sm-6 col-lg-3">
+        <div class="service-card text-center h-100 p-4 rounded-3 shadow-sm">
+          <i class="bi {{ svc.icon }} service-icon mb-3 d-block"></i>
+          <h6 class="fw-semibold mb-2">{{ svc.title }}</h6>
+          <p class="text-muted small mb-0">{{ svc.desc }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     TESTIMONIALS — Nunjucks set + loop
+═══════════════════════════════════════════ -->
+{% set testimonials = [
+  {
+    quote: "The Kerala houseboat experience was magical. Our guide cooked us a Sadhya feast on banana leaves we'll never forget.",
+    name: "Aanya M.",
+    city: "Bengaluru"
+  },
+  {
+    quote: "Rajasthan was a dream. From Jaisalmer's dunes to Jodhpur's blue lanes — every stay was a story.",
+    name: "Rahul S.",
+    city: "Delhi"
+  },
+  {
+    quote: "They planned our Ladakh trip down to the chai stops. Pangong Lake at sunrise was worth every kilometre.",
+    name: "Priya K.",
+    city: "Mumbai"
+  }
+] %}
+
+<section class="py-5 bg-cream">
+  <div class="container">
+    <div class="section-header text-center mb-5">
+      <p class="section-eyebrow">Travellers Speak</p>
+      <h2 class="playfair section-title">Stories from the road</h2>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      {% for t in testimonials %}
+      <div class="col-md-4">
+        <div class="testimonial-card h-100 p-4 rounded-3 shadow-sm">
+          <i class="bi bi-quote fs-1 text-saffron d-block mb-2"></i>
+          <p class="fst-italic text-muted mb-3">"{{ t.quote }}"</p>
+          <p class="fw-semibold mb-0">— {{ t.name }}, {{ t.city }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% include "partials/footer.njk" %}
+
+</body>
+</html>

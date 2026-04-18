@@ -1,0 +1,609 @@
+/* ═══════════════════════════════════════════════════════════════
+   Incredible India — Custom Design System
+   Task 2: Nunjucks + Vite
+   Mirrors the design of Task 1 (Bootstrap 5 + pure HTML)
+═══════════════════════════════════════════════════════════════ */
+
+/* ── 1. CSS Variables ────────────────────────────────────────── */
+:root {
+  --ii-saffron:      #ff8a3d;
+  --ii-saffron-dark: #e6721f;
+  --ii-green:        #1a7f5a;
+  --ii-green-dark:   #156347;
+  --ii-blue:         #2f7fc8;
+  --ii-cream:        #fffaf3;
+  --ii-dark:         #1a1a2e;
+  --ii-text:         #3d3d3d;
+  --ii-muted:        #6c757d;
+  --ii-radius:       0.75rem;
+  --ii-shadow:       0 2px 16px rgba(0,0,0,0.08);
+}
+
+/* ── 2. Base ──────────────────────────────────────────────────── */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--ii-text);
+  background: var(--ii-cream);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.playfair { font-family: 'Playfair Display', serif; }
+.bg-cream  { background-color: var(--ii-cream) !important; }
+
+/* ── 3. Tricolour Strip ───────────────────────────────────────── */
+.tricolour-strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    #ff9933 0%,
+    #ff9933 33.33%,
+    #ffffff 33.33%,
+    #ffffff 66.66%,
+    #138808 66.66%,
+    #138808 100%
+  );
+  z-index: 10;
+}
+
+/* ── 4. Navbar ────────────────────────────────────────────────── */
+.ii-navbar {
+  background: rgba(255,255,255,0.97) !important;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 12px rgba(0,0,0,0.07);
+  padding: 0.5rem 0;
+}
+
+.ii-navbar .brand-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--ii-dark);
+}
+
+.ii-navbar .logo-img {
+  object-fit: contain;
+}
+
+.ii-navbar .nav-link {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ii-text);
+  padding: 0.5rem 0.75rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.ii-navbar .nav-link:hover,
+.ii-navbar .nav-link.active {
+  color: var(--ii-saffron);
+  border-bottom-color: var(--ii-saffron);
+}
+
+/* ── 5. Buttons ───────────────────────────────────────────────── */
+.btn-saffron {
+  background-color: var(--ii-saffron);
+  border: 2px solid var(--ii-saffron);
+  color: #fff;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+
+.btn-saffron:hover {
+  background-color: var(--ii-saffron-dark);
+  border-color: var(--ii-saffron-dark);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.btn-outline-saffron {
+  background: transparent;
+  border: 2px solid var(--ii-saffron);
+  color: var(--ii-saffron);
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.btn-outline-saffron:hover {
+  background: var(--ii-saffron);
+  color: #fff;
+}
+
+/* ── 6. Hero ──────────────────────────────────────────────────── */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+}
+
+.hero-slide {
+  height: 100vh;
+  min-height: 600px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.carousel,
+.carousel-inner,
+.carousel-item {
+  height: 100%;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10,10,30,0.35) 0%,
+    rgba(10,10,30,0.65) 60%,
+    rgba(10,10,30,0.80) 100%
+  );
+  z-index: 2;
+}
+
+.hero-tagline {
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.2;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  max-width: 600px;
+  opacity: 0.88;
+}
+
+/* Stats */
+.stat-item { min-width: 100px; }
+
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--ii-saffron);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.78;
+  margin-top: 4px;
+}
+
+/* ── 7. Page Hero (About / Contact) ─────────────────────────── */
+.page-hero {
+  position: relative;
+  min-height: 380px;
+  background-size: cover;
+  background-position: center;
+}
+
+.about-hero {
+  background-image:
+    linear-gradient(rgba(10,10,30,0.55), rgba(10,10,30,0.70)),
+    url('https://images.unsplash.com/photo-1616418966952-a48e5b4f6e8d?w=1920&q=80');
+}
+
+.contact-hero {
+  background-image:
+    linear-gradient(rgba(10,10,30,0.55), rgba(10,10,30,0.70)),
+    url('https://images.unsplash.com/photo-1524613032530-449a5d94c285?w=1920&q=80');
+}
+
+/* ── 8. Section Headers ──────────────────────────────────────── */
+.section-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ii-saffron);
+  margin-bottom: 0.25rem;
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: var(--ii-dark);
+  margin-bottom: 0.5rem;
+}
+
+.section-sub {
+  max-width: 560px;
+  font-size: 0.93rem;
+}
+
+/* ── 9. Feature Cards (Why Us) ───────────────────────────────── */
+.feature-card {
+  background: #fff;
+  border-radius: var(--ii-radius);
+  padding: 2rem 1.5rem;
+  box-shadow: var(--ii-shadow);
+  transition: transform 0.2s;
+}
+
+.feature-card:hover { transform: translateY(-4px); }
+
+.feature-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255,138,61,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  font-size: 1.5rem;
+  color: var(--ii-saffron);
+}
+
+/* ── 10. Region Filter Pills ─────────────────────────────────── */
+.filter-pill {
+  background: #fff;
+  border: 1.5px solid #dee2e6;
+  border-radius: 100px;
+  padding: 0.35rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ii-text);
+  cursor: pointer;
+  transition: all 0.18s;
+}
+
+.filter-pill:hover {
+  border-color: var(--ii-saffron);
+  color: var(--ii-saffron);
+}
+
+.filter-pill.active {
+  background: var(--ii-saffron);
+  border-color: var(--ii-saffron);
+  color: #fff;
+}
+
+/* ── 11. State Cards ─────────────────────────────────────────── */
+.ii-card {
+  border-radius: var(--ii-radius) !important;
+  transition: transform 0.22s, box-shadow 0.22s;
+  overflow: hidden;
+}
+
+.ii-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.14) !important;
+}
+
+.card-img-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 180px;
+}
+
+.card-img-wrap .card-img-top {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.ii-card:hover .card-img-top { transform: scale(1.06); }
+
+.card-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 0.22rem 0.6rem;
+  border-radius: 100px;
+  background: var(--ii-saffron) !important;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.price-tag {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ii-green);
+}
+
+.text-saffron { color: var(--ii-saffron) !important; }
+.text-green   { color: var(--ii-green) !important; }
+.text-blue    { color: var(--ii-blue) !important; }
+
+.state-card-col.hidden { display: none; }
+
+/* ── 12. Package Cards ───────────────────────────────────────── */
+.pkg-card {
+  border-radius: var(--ii-radius) !important;
+  transition: transform 0.22s, box-shadow 0.22s;
+}
+
+.pkg-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.14) !important;
+}
+
+.pkg-img-wrap { height: 220px; overflow: hidden; }
+
+.pkg-img {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.pkg-card:hover .pkg-img { transform: scale(1.05); }
+
+.pkg-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 0.22rem 0.65rem;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.bg-saffron { background-color: var(--ii-saffron) !important; }
+.bg-green   { background-color: var(--ii-green) !important; }
+.bg-blue    { background-color: var(--ii-blue) !important; }
+
+/* ── 13. CTA Banner ──────────────────────────────────────────── */
+.cta-banner {
+  background: linear-gradient(135deg, var(--ii-dark) 0%, #16213e 60%, var(--ii-green-dark) 100%);
+}
+
+/* ── 14. About Images ────────────────────────────────────────── */
+.about-img {
+  height: 220px;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.about-img:hover { transform: scale(1.02); }
+
+/* ── 15. Faith Cards ─────────────────────────────────────────── */
+.faith-card {
+  background: #fff;
+  border-radius: 0.6rem;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.07);
+  transition: transform 0.2s;
+}
+
+.faith-card:hover { transform: translateY(-3px); }
+
+.tricolour-mini {
+  width: 36px;
+  height: 22px;
+  border-radius: 3px;
+  background: linear-gradient(
+    to bottom,
+    #ff9933 0%,
+    #ff9933 33%,
+    #fff 33%,
+    #fff 66%,
+    #138808 66%,
+    #138808 100%
+  );
+  border: 1px solid #eee;
+  margin: 0 auto;
+  position: relative;
+}
+
+.tricolour-mini::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid #000080;
+}
+
+/* ── 16. Tradition Cards ─────────────────────────────────────── */
+.tradition-card { transition: transform 0.2s; }
+.tradition-card:hover { transform: translateY(-4px); }
+
+.tradition-img {
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.35s;
+}
+
+.tradition-card:hover .tradition-img { transform: scale(1.04); }
+
+/* ── 17. Service Cards ───────────────────────────────────────── */
+.service-card {
+  background: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1) !important;
+}
+
+.service-icon {
+  font-size: 2rem;
+  color: var(--ii-saffron);
+}
+
+/* ── 18. Testimonial Cards ───────────────────────────────────── */
+.testimonial-card {
+  background: #fff;
+  border-left: 4px solid var(--ii-saffron);
+  transition: transform 0.2s;
+}
+
+.testimonial-card:hover { transform: translateY(-3px); }
+
+/* ── 19. Contact / Booking Form ──────────────────────────────── */
+.contact-form-wrap {
+  background: #fff;
+}
+
+.ii-input {
+  border: 1.5px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  padding: 0.55rem 0.85rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.ii-input:focus {
+  border-color: var(--ii-saffron);
+  box-shadow: 0 0 0 3px rgba(255,138,61,0.15);
+  outline: none;
+}
+
+.info-card { background: #fff; transition: transform 0.2s; }
+.info-card:hover { transform: translateY(-2px); }
+
+/* ── 20. FAQ Accordion ───────────────────────────────────────── */
+.ii-accordion .accordion-button {
+  font-weight: 500;
+  font-size: 0.92rem;
+  background: #fff;
+  color: var(--ii-dark);
+  box-shadow: none;
+}
+
+.ii-accordion .accordion-button:not(.collapsed) {
+  color: var(--ii-saffron);
+  background: #fff8f2;
+}
+
+.ii-accordion .accordion-button::after {
+  filter: none;
+}
+
+.ii-accordion .accordion-button:not(.collapsed)::after {
+  filter: invert(52%) sepia(90%) saturate(500%) hue-rotate(350deg);
+}
+
+/* ── 21. Footer ──────────────────────────────────────────────── */
+.ii-footer {
+  background: var(--ii-dark);
+}
+
+.footer-links li { margin-bottom: 0.4rem; }
+
+.footer-links a {
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--ii-saffron); }
+
+.social-icon { transition: color 0.2s, transform 0.2s; }
+.social-icon:hover { color: var(--ii-saffron) !important; transform: translateY(-2px); }
+
+/* ── 22. Modal ───────────────────────────────────────────────── */
+.modal-content { border-radius: var(--ii-radius); }
+
+/* ── 23. Responsive Tweaks ───────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero-section { height: 85vh; }
+  .hero-slide   { height: 85vh; }
+  .hero-title   { font-size: 2rem; }
+  .hero-subtitle { font-size: 0.9rem; }
+  .stat-num     { font-size: 1.8rem; }
+  .page-hero    { min-height: 280px; }
+}
+
+@media (max-width: 576px) {
+  .hero-stats   { gap: 1.5rem !important; }
+  .stat-item    { min-width: 80px; }
+}
+
+/* ── 24. Scroll animations (lightweight) ─────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  .ii-card,
+  .pkg-card,
+  .feature-card,
+  .faith-card,
+  .service-card,
+  .testimonial-card {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.55s forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .ii-card:nth-child(2)  { animation-delay: 0.05s; }
+  .ii-card:nth-child(3)  { animation-delay: 0.10s; }
+  .ii-card:nth-child(4)  { animation-delay: 0.15s; }
+}
+.about-hero{
+  background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+  url('../images/about-banner.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 80vh;
+  color: white;
+}
+.about-hero .hero-title{
+  font-size: 3rem;
+  font-weight: 700;
+}
+/* Stats on cream background */
+.stat-num-dark {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--ii-saffron);
+  line-height: 1;
+}
+
+.stat-label-dark {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ii-text);
+  margin-top: 6px;
+}
+
+/* Carousel arrow buttons — darken them on cream bg */
+#heroCarouselStandalone .carousel-control-prev,
+#heroCarouselStandalone .carousel-control-next {
+  width: 42px;
+  height: 42px;
+  background: rgba(0,0,0,0.45);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}

@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-light ii-navbar sticky-top" id="mainNav">
+  <div class="container">
+
+    <!-- Brand -->
+    <a class="navbar-brand d-flex align-items-center gap-2" href="/index.html">
+      <img src="/assets/images/logo.png" alt="Incredible India logo" height="38" class="logo-img" />
+      <span class="brand-name">Incredible India</span>
+    </a>
+
+    <!-- Toggler -->
+    <button
+      class="navbar-toggler border-0"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navMenu"
+      aria-controls="navMenu"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links -->
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item">
+          <a class="nav-link {{ 'active' if activePage == 'home' }}" href="/index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/index.html#states">States</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/index.html#packages">Packages</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ 'active' if activePage == 'about' }}" href="/about.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ 'active' if activePage == 'contact' }}" href="/contact.html">Contact</a>
+        </li>
+        <li class="nav-item ms-lg-2">
+          <a class="btn btn-saffron btn-sm px-3" href="/contact.html#bookForm">Book a Trip</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>

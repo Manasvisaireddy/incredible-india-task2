@@ -1,0 +1,275 @@
+{% set pageTitle = "Contact & Book Your Trip — Incredible India" %}
+{% set activePage = "contact" %}
+
+{% include "partials/head.njk" %}
+<body>
+
+{% include "partials/navbar.njk" %}
+
+<!-- ══════════════════════════════════════════
+     CONTACT HERO
+═══════════════════════════════════════════ -->
+<section class="page-hero contact-hero d-flex align-items-center">
+  <div class="tricolour-strip"></div>
+  <div class="container text-center text-white">
+    <h1 class="playfair hero-title mb-3">Plan Your Bharat Journey</h1>
+    <p class="hero-subtitle mx-auto">
+      Tell us your dream — we craft an itinerary that breathes culture, colour and wonder.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     BOOKING FORM + CONTACT INFO
+═══════════════════════════════════════════ -->
+<section class="py-5 bg-cream" id="bookForm">
+  <div class="container">
+    <div class="row g-5 justify-content-center">
+
+      <!-- Booking Form -->
+      <div class="col-lg-7">
+        <div class="contact-form-wrap p-4 p-md-5 rounded-3 shadow-sm bg-white">
+          <h3 class="playfair mb-1">Book Your Trip</h3>
+          <p class="text-muted small mb-4">
+            Pick your region, dates and preferences — we'll reply within 24 hours.
+          </p>
+
+          <form
+            action="https://formspree.io/f/mlgajyrb"
+            method="POST"
+            class="booking-form"
+            id="bookingForm"
+          >
+            <div class="row g-3">
+
+              <!-- Name -->
+              <div class="col-sm-6">
+                <label for="fullName" class="form-label small fw-medium">Full Name</label>
+                <input
+                  type="text"
+                  class="form-control ii-input"
+                  id="fullName"
+                  name="fullName"
+                  placeholder="Your name"
+                  required
+                />
+              </div>
+
+              <!-- Email -->
+              <div class="col-sm-6">
+                <label for="email" class="form-label small fw-medium">Email</label>
+                <input
+                  type="email"
+                  class="form-control ii-input"
+                  id="email"
+                  name="email"
+                  placeholder="you@example.com"
+                  required
+                />
+              </div>
+
+              <!-- Phone -->
+              <div class="col-sm-6">
+                <label for="phone" class="form-label small fw-medium">Phone</label>
+                <input
+                  type="tel"
+                  class="form-control ii-input"
+                  id="phone"
+                  name="phone"
+                  placeholder="+91 98765 43210"
+                />
+              </div>
+
+              <!-- Travellers -->
+              <div class="col-sm-6">
+                <label for="travellers" class="form-label small fw-medium">Travellers</label>
+                <select class="form-select ii-input" id="travellers" name="travellers">
+                  <option value="1">1</option>
+                  <option value="2" selected>2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5+">5+</option>
+                  <option value="45+">45+</option>
+                </select>
+              </div>
+
+              <!-- Region -->
+              {% set regions = [
+                "Any region",
+                "North India",
+                "South India",
+                "East India",
+                "West India",
+                "Northeast India",
+                "Union Territories / Islands"
+              ] %}
+              <div class="col-sm-6">
+                <label for="region" class="form-label small fw-medium">Region / Filter</label>
+                <select class="form-select ii-input" id="region" name="region">
+                  {% for r in regions %}
+                  <option value="{{ r }}">{{ r }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <!-- Package Type -->
+              {% set pkgTypes = [
+                "Heritage & Monuments",
+                "Spiritual & Pilgrimage",
+                "Hill & Adventure",
+                "Beach & Islands",
+                "Cultural & Festivals",
+                "Custom Itinerary"
+              ] %}
+              <div class="col-sm-6">
+                <label for="pkgType" class="form-label small fw-medium">Package Type</label>
+                <select class="form-select ii-input" id="pkgType" name="pkgType">
+                  {% for p in pkgTypes %}
+                  <option value="{{ p }}">{{ p }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <!-- Dates -->
+              <div class="col-sm-6">
+                <label for="startDate" class="form-label small fw-medium">Start Date</label>
+                <input type="date" class="form-control ii-input" id="startDate" name="startDate" />
+              </div>
+              <div class="col-sm-6">
+                <label for="endDate" class="form-label small fw-medium">End Date</label>
+                <input type="date" class="form-control ii-input" id="endDate" name="endDate" />
+              </div>
+
+              <!-- Message -->
+              <div class="col-12">
+                <label for="message" class="form-label small fw-medium">Tell us about your dream trip</label>
+                <textarea
+                  class="form-control ii-input"
+                  id="message"
+                  name="message"
+                  rows="4"
+                  placeholder="Destinations you love, travel style, dietary needs, anything else..."
+                ></textarea>
+              </div>
+
+              <!-- Submit -->
+              <div class="col-12">
+                <button type="submit" class="btn btn-saffron w-100 py-2 mt-1">
+                  <i class="bi bi-send me-2"></i>Send Booking Enquiry
+                </button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Contact Info Panel -->
+      <div class="col-lg-4">
+        <div class="contact-info d-flex flex-column gap-4">
+
+          <!-- Email -->
+          <div class="info-card p-4 rounded-3 shadow-sm bg-white">
+            <i class="bi bi-envelope-fill text-saffron fs-4 mb-2 d-block"></i>
+            <h6 class="fw-semibold mb-1">Email Us</h6>
+            <a href="mailto:saireddymanasvi@gmail.com" class="text-decoration-none text-muted small">
+              saireddymanasvi@gmail.com
+            </a>
+            <p class="text-muted small mb-0 mt-1">Replies within 24 hours</p>
+          </div>
+
+          <!-- Office -->
+          <div class="info-card p-4 rounded-3 shadow-sm bg-white">
+            <i class="bi bi-geo-alt-fill text-saffron fs-4 mb-2 d-block"></i>
+            <h6 class="fw-semibold mb-1">Office</h6>
+            <p class="text-muted small mb-0">Hyderabad, Telangana, India</p>
+            <p class="text-muted small mb-0">Mon–Sat · 10:00 AM – 7:00 PM IST</p>
+          </div>
+
+          <!-- Concierge -->
+          <div class="info-card p-4 rounded-3 shadow-sm bg-white">
+            <i class="bi bi-headset text-saffron fs-4 mb-2 d-block"></i>
+            <h6 class="fw-semibold mb-1">Travel Concierge</h6>
+            <p class="text-muted small mb-0">
+              Custom itineraries, group tours,<br />festival calendars &amp; more.
+            </p>
+            <span class="badge bg-green mt-2">Free consultation</span>
+          </div>
+
+          <!-- Logo card -->
+          <div class="info-card p-4 rounded-3 shadow-sm bg-white text-center">
+            <img src="/assets/images/logo.png" alt="Incredible India" height="48" class="mb-2" />
+            <h6 class="fw-semibold mb-1">Atithi Devo Bhava</h6>
+            <p class="text-muted small mb-0 fst-italic">"The guest is equivalent to God."</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FAQ — Nunjucks set + loop
+═══════════════════════════════════════════ -->
+{% set faqs = [
+  {
+    q: "Do you cover all 28 states & 8 UTs?",
+    a: "Yes — from Ladakh to Lakshadweep, Gujarat to Arunachal, every region is on our map."
+  },
+  {
+    q: "Can you customize itineraries?",
+    a: "Absolutely. Share dates, interests and pace — we craft a route that matches your spirit."
+  },
+  {
+    q: "Are festivals included?",
+    a: "Yes — Diwali in Varanasi, Holi in Mathura, Onam in Kerala, Hornbill in Nagaland and many more."
+  }
+] %}
+
+<section class="py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="section-header text-center mb-4">
+          <p class="section-eyebrow">Frequently Asked</p>
+          <h2 class="playfair section-title">Common Questions</h2>
+        </div>
+
+        <div class="accordion ii-accordion" id="faqAccordion">
+          {% for faq in faqs %}
+          <div class="accordion-item border-0 mb-2 rounded-3 shadow-sm overflow-hidden">
+            <h2 class="accordion-header" id="faqHead{{ loop.index }}">
+              <button
+                class="accordion-button {{ 'collapsed' if not loop.first }}"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#faqBody{{ loop.index }}"
+                aria-expanded="{{ 'true' if loop.first else 'false' }}"
+                aria-controls="faqBody{{ loop.index }}"
+              >
+                {{ faq.q }}
+              </button>
+            </h2>
+            <div
+              id="faqBody{{ loop.index }}"
+              class="accordion-collapse collapse {{ 'show' if loop.first }}"
+              aria-labelledby="faqHead{{ loop.index }}"
+              data-bs-parent="#faqAccordion"
+            >
+              <div class="accordion-body text-muted">{{ faq.a }}</div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% include "partials/footer.njk" %}
+
+</body>
+</html>
